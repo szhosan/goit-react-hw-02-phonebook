@@ -52,17 +52,15 @@ class App extends Component {
   };
 
   render() {
+    const { contacts, filter } = this.state;
     return (
       <>
         <Section title="Phonebook">
           <AddContactForm onSubmit={this.formSubmitHandler} />
         </Section>
-        {this.state.contacts.length > 0 && (
+        {contacts.length > 0 && (
           <Section title="Contacts">
-            <ContactSearch
-              value={this.filter}
-              onChange={this.handleSearchContact}
-            />
+            <ContactSearch value={filter} onChange={this.handleSearchContact} />
             <ContactsList
               contacts={this.getFilteredContacts()}
               onDeleteContact={this.onDeleteContact}
